@@ -33,7 +33,7 @@ option(ENABLE_PEDANTIC_ERROR
 option(DISABLE_STACK_PROTECTION
   "Disable stack smashing protection (-fno-stack-protector)."
   ON)
-CMAKE_DEPENDENT_OPTION(PROJECTVARNAME_BUILD_TESTING
+CMAKE_DEPENDENT_OPTION(TEST_PLAYGROUND_BUILD_TESTING
   "Enable testing even when this project is used as an external project."
   OFF
   "NOT CMAKE_CROSSCOMPILING" OFF)
@@ -48,9 +48,9 @@ CMAKE_DEPENDENT_OPTION(DISABLE_BUILTINS
 ###################
 
 if((NOT CMAKE_CROSSCOMPILING) AND BUILD_TESTING AND
-    (PROJECTVARNAME_BUILD_TESTING OR (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)))
+    (TEST_PLAYGROUND_BUILD_TESTING OR (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)))
   message("Enabling tests.")
-  set(PROJECTVARNAME_TESTING_IS_ENABLED ON CACHE INTERNAL "Logic that sets whether testing is enabled on this project")
+  set(TEST_PLAYGROUND_TESTING_IS_ENABLED ON CACHE INTERNAL "Logic that sets whether testing is enabled on this project")
 endif()
 
 if("${ENABLE_LTO}")

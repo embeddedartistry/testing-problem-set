@@ -1,17 +1,14 @@
 cmake_minimum_required(VERSION 3.17)
-project(MYPROJECT
-	VERSION 0.1
-	DESCRIPTION "MYDESCRIPTION"
-	LANGUAGES C CXX ASM)
+project(TestPlayground
+	LANGUAGES C CXX)
 
-set_property(GLOBAL PROPERTY C_STANDARD 11)
-set_property(GLOBAL PROPERTY CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 17)
 
 #################
 # Build Modules #
 #################
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR PROJECTVARNAME_BUILD_TESTING)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR TEST_PLAYGROUND_BUILD_TESTING)
     include(CTest)
 endif()
 
@@ -34,13 +31,8 @@ include(cmake/analysis/coverage.cmake)
 include(cmake/analysis/sanitizers.cmake)
 
 # Enable CMocka support if testing is enabled
-if(PROJECTVARNAME_TESTING_IS_ENABLED)
-  include(cmake/test/cmocka.cmake)
-endif()
-
-# Enable Catch2 Support if testing is enabled
-if(PROJECTVARNAME_TESTING_IS_ENABLED)
-  include(cmake/test/catch2.cmake)
+if(TEST_PLAYGROUND_TESTING_IS_ENABLED)
+  include(cmake/test/unity.cmake)
 endif()
 
 # Specifies default compiler flags for the project
@@ -50,20 +42,6 @@ include(cmake/linker/DefaultLinkerSettings.cmake)
 
 # Define Packaging Rules
 include(Packaging.cmake)
-
-#########################
-# External Dependencies #
-#########################
-
-# You can set an ETL_PROFILE variable option to control the profile header to include
-# The library is called etl
-CPMAddPackage(
-	NAME etl
-	GIT_REPOSITORY git@github.com:ETLCPP/etl.git
-	GIT_TAG master
-	OPTIONS
-		"BUILD_TESTS OFF"
-)
 
 ##########################
 # Enable Static Analysis #
@@ -95,7 +73,7 @@ include(cmake/format/clang-format.cmake)
 # Provides complexity analysis targets
 include(cmake/analysis/complexity.cmake)
 # Defines code coverage analysis targets
-enable_coverage_targets(MYPROJECT_tests)
+enable_coverage_targets(TestPlayground_tests)
 # Provides Doxygen documentation generation target
 include(cmake/documentation/doxygen.cmake)
 # Provides SLOCCount targets
