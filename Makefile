@@ -56,7 +56,7 @@ default: | $(CONFIGURED_BUILD_DEP)
 
 .PHONY: test
 test: default
-	$(Q)cd $(BUILDRESULTS); ctest
+	$(Q)ninja -C $(BUILDRESULTS) test/test-TestPlayground_unity_tests
 
 .PHONY: docs
 docs: | $(CONFIGURED_BUILD_DEP)

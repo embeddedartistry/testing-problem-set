@@ -1,26 +1,28 @@
 /*
- * Copyright © 2020 Embedded Artistry LLC.
+ * Copyright © 2022 Embedded Artistry LLC.
  * See LICENSE file for licensing information.
  */
 
-// CMocka needs these
-// clang-format off
-#include <setjmp.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <cmocka.h>
-// clang-format on
+#include "unity.h"
 
-#include <tests.h>
+extern int bits_test_suite();
+extern int fixed_point_test_suite();
+extern int freelist_locking_test_suite();
+extern int qsort_test_suite();
+
+static int runAllTests()
+{
+	int test_status = 0;
+
+	test_status = bits_test_suite();
+	test_status |= fixed_point_test_suite();
+	test_status |= freelist_locking_test_suite();
+	test_status |= qsort_test_suite();
+
+	return test_status;
+}
 
 int main(void)
 {
-	int overall_result = 0;
-
-	// Generate JUnit results
-	cmocka_set_message_output(CM_OUTPUT_XML);
-
-	overall_result = test_suite();
-
-	return overall_result;
+	return runAllTests();
 }
