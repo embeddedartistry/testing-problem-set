@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <stdint.h>
 
 #ifdef I_AM_QSORT_R
 typedef int cmp_t(void*, const void*, const void*);
