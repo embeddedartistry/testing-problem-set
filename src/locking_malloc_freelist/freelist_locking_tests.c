@@ -2,20 +2,16 @@
 #include <stdbool.h>
 #include <malloc.h>
 
+int freelist_locking_test_suite(void);
+
 #if 0
-This test case is a bit more complex - we're testing a malloc implementation.
-
-The primary goal of this exercise is testing with a side effect:
-	How can you be sure that the malloc_lock() and malloc_unlock() functions
-	actually work?
-	Check freelist.c to find those functions and their documentation.
+// This test case is a bit more complex - we're testing a malloc implementation.
+//
+// The primary goal of this exercise is testing with a side effect:
+//	How can you be sure that the malloc_lock() and malloc_unlock() functions
+//	actually work?
+//	Check freelist.c to find those functions and their documentation.
 #endif
-
-#pragma mark - Declarations -
-
-#define ALLOCATION_TEST_COUNT 768
-
-static void* ptr_array[ALLOCATION_TEST_COUNT];
 
 #pragma mark - Block Management -
 
