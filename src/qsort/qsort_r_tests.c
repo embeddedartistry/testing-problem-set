@@ -14,6 +14,8 @@ void qsort_r(void *base, size_t nel, size_t width,
   and can be used to pass information between the caller and the comparison function.
 #endif
 
+int qsort_test_suite(void);
+
 #pragma mark - Declarations -
 
 /* 23 items -- odd, prime */

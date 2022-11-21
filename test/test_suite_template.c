@@ -6,6 +6,8 @@
 #include <unity.h>
 #include <stdbool.h>
 
+int test_suite(void);
+
 static void test_case(void)
 {
 	TEST_ASSERT(false);

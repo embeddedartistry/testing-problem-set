@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include "bits.h"
 
+int bits_test_suite(void);
+
 static void check_power_2(void)
 {
 	// TODO: write tests to check IS_POWER_2() macro

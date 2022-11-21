@@ -26,6 +26,8 @@ https://www.rfwireless-world.com/calculators/floating-vs-fixed-point-converter.h
 
 #endif
 
+int fixed_point_test_suite(void);
+
 static void double_to_fixed16_test()
 {
 	// TODO: test double -> fixed point conversion
